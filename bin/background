@@ -2,5 +2,5 @@
 set -e
 
 # schedule and run cron jobs in background
-crontab crontab.txt
-crond -f
+/usr/bin/crontab crontab.txt
+/usr/sbin/crond -f

@@ -1,0 +1,6 @@
+#!/bin/sh
+set -e
+
+# schedule and run cron jobs in background
+crontab crontab.txt
+crond -f

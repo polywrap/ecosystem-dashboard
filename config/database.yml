@@ -87,6 +87,5 @@ test:
 production:
   <<: *default
   database: <%= ENV.fetch("DATABASE_NAME") { 'ecosystem_production' } %>
-  database: ecosystem_production
-  username: ecosystem
-  password: <%= ENV['ECOSYSTEM_DATABASE_PASSWORD'] %>
+  username: <%= ENV["POSTGRES_USER"] %>
+  password: <%= ENV["POSTGRES_PASSWORD"] %>

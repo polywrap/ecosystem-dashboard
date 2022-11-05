@@ -10,8 +10,5 @@ done
 bundle exec rake db:create db:migrate
 rm -rf tmp/pids
 
-# initialize organizations
-exec bundle exec rake init_orgs:all
-
 #exec foreman start -d .
 exec bundle exec rails s -b 0.0.0.0

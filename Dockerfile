@@ -29,9 +29,6 @@ RUN apk add --update \
  && bundle config set without 'test' \
  && bundle install --jobs 2
 
-RUN bundle config unset frozen \
-&& bundle add 'whenever'
-
 # ========================================================
 # Application layer
 

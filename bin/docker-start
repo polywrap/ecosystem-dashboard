@@ -11,4 +11,4 @@ bundle exec rake db:create db:migrate
 rm -rf tmp/pids
 
 #exec foreman start -d .
-exec bundle exec rails s -b 0.0.0.0 -p 80 -e ${RAILS_ENV}
+exec bundle exec rails s -b 0.0.0.0 -e ${RAILS_ENV}

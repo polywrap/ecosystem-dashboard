@@ -67,32 +67,6 @@ services:
       - redis.service.ecosystem.internal
     entrypoint: ./bin/background
 
-#  sidekiq:
-#    build:
-#      context: .
-#      dockerfile: Dockerfile
-#    volumes:
-#      - .:/usr/src/app
-#    environment:
-#      - PORT=3000
-#      - PIDFILE=/usr/src/app/tmp/pids/server.pid
-#      - RAILS_ENV=${RAILS_ENV}
-#      - GITHUB_CLIENT_ID=${GITHUB_CLIENT_ID}
-#      - GITHUB_CLIENT_SECRET=${GITHUB_CLIENT_SECRET}
-#      - POSTGRES_USER=ecosystem
-#      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
-#      - DATABASE_NAME=${DATABASE_NAME}
-#      - RAILS_MASTER_KEY=${RAILS_MASTER_KEY}
-#      - DATABASE_HOST=database.service.ecosystem.internal
-#      - REDIS_URL=redis://redis.service.ecosystem.internal
-#    networks:
-#      - internal
-#    depends_on:
-#      - app
-#      - database.service.ecosystem.internal
-#      - redis.service.ecosystem.internal
-#    entrypoint: ./bin/sidekiq
-
 volumes:
   pg_data:
 

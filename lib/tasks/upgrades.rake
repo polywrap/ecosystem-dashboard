@@ -1,9 +1,9 @@
 require 'csv'
 
 namespace :upgrades do
-  desc 'discover and export a csv of issues and pull requests on github related to updating ipfs'
+  desc 'discover and export a csv of issues and pull requests on github related to updating polywrap'
   task search: :environment do
-    search_to_csv(["update ipfs is:issue", "update ipfs is:pr", "upgrade ipfs is:issue", "upgrade ipfs is:pr", "bump ipfs", "ipfs 0.5", "go-ipfs", "ipfs docker"], 'ipfs')
+    search_to_csv(["update polywrap is:issue", "update polywrap is:pr", "upgrade polywrap is:issue", "upgrade polywrap is:pr", "bump polywrap", "polywrap 0.5", "go-polywrap", "polywrap docker"], 'polywrap')
   end
 end
 

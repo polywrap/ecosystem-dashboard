@@ -1,5 +1,5 @@
 namespace :discovery do
-  desc "search libraries.io for packages mentioning ipfs"
+  desc "search libraries.io for packages mentioning polywrap"
   task packages: :environment do
     platforms = ['npm', 'maven', 'rubygems', 'pypi', 'cargo', 'packagist', 'nuget', 'clojars', 'cocoapods', 'hackage', 'hex', 'meteor', 'carthage', 'pub']
 
@@ -8,7 +8,7 @@ namespace :discovery do
       results = []
       page = 1
       loop do
-        url = "https://libraries.io/api/search?platforms=#{platform}&q=ipfs&per_page=100&page=#{page}"
+        url = "https://libraries.io/api/search?platforms=#{platform}&q=polywrap&per_page=100&page=#{page}"
         json = PackageManager::Base.send :get, url
         break if json.length.zero?
         results += json
@@ -83,7 +83,7 @@ namespace :discovery do
     end
   end
 
-  desc "find collab repos that depend on ipfs packages"
+  desc "find collab repos that depend on polywrap packages"
   task local_search: :environment do
     search_repo_names = SearchResult.group(:repository_full_name).count.keys
     File.open("data/search_results.json","w") do |f|

@@ -264,7 +264,7 @@ class Issue < ApplicationRecord
   end
 
   def calculate_pr_merge_time
-    return unless repo_full_name == 'filecoin-project/lotus'
+    return unless repo_full_name == 'polywrap'
     return unless pull_request?
     return if review_time.present?
 
@@ -273,7 +273,7 @@ class Issue < ApplicationRecord
     if review_requested_at
       start_time = review_requested_at
     else
-      start_time = events.select{|e| e[:event] == 'review_requested' && e[:requested_team] && e[:requested_team][:name] == "lotus-maintainers"}.first.try(:created_at)
+      start_time = events.select{|e| e[:event] == 'review_requested'}.first.try(:created_at)
       return if start_time.nil?
       update_columns(review_requested_at: start_time)
     end

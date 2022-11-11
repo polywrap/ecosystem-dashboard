@@ -1,10 +1,10 @@
 require 'csv'
 
 namespace :docker do
-  desc 'search github for repositories that have Dockerfile files containing "ipfs"'
+  desc 'search github for repositories that have Dockerfile files containing "polywrap"'
   task search: :environment do
     client = Issue.github_client
-    search = client.search_code("filename:Dockerfile ipfs")
+    search = client.search_code("filename:Dockerfile polywrap")
 
     CSV.open("data/docker.csv", "w") do |csv|
 
@@ -71,11 +71,11 @@ namespace :docker do
     end
   end
 
-  desc 'search github for repositories that have docker-compose files containing "ipfs"'
+  desc 'search github for repositories that have docker-compose files containing "polywrap"'
   task search_compose: :environment do
     client = Issue.github_client
 
-    search = client.search_code("filename:docker-compose ipfs")
+    search = client.search_code("filename:docker-compose polywrap")
 
     CSV.open("data/docker-compose.csv", "w") do |csv|
 

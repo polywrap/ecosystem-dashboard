@@ -18,7 +18,7 @@ namespace :changelog do
 
   desc "generate a changelog file for a repository based on it's releases"
   task generate: :environment do
-    full_name = 'ipfs-shipyard/ipld-explorer-components'
+    full_name = 'polywrap'
     repo = Repository.find_by_full_name(full_name)
     releases = repo.events.event_type('ReleaseEvent')
 

@@ -14,12 +14,24 @@ class HomeController < ApplicationController
       @packages_scope = @packages_scope.org(params[:org])
     end
 
-    if params[:core].present?
-      @event_scope = @event_scope.core
-      @issues_scope = @issues_scope.core
-    else
-      @event_scope = @event_scope.not_core
-      @issues_scope = @issues_scope.not_core
+    if params[:contributors].present?
+        if (params[:contributors] == "core")
+          @event_scope = @event_scope.core
+          @issues_scope = @issues_scope.core
+        elsif (params[:contributors] == "not_core")
+          @event_scope = @event_scope.not_core
+          @issues_scope = @issues_scope.not_core
+      end
+    end
+
+    if params[:org_type].present?
+        if (params[:org_type] == "internal")
+          @event_scope = @event_scope.internal
+          @issues_scope = @issues_scope.internal
+        elsif (params[:org_type] == "external")
+          @event_scope = @event_scope.external
+          @issues_scope = @issues_scope.external
+        end
     end
 
     @period = (params[:range].presence || 7).to_i

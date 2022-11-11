@@ -1,0 +1,77 @@
+<nav class="mb-2 mt-2 navbar navbar-expand-lg navbar-light">
+    <span class="navbar-brand" >
+      <strong>Community activity</strong>
+    </span>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="nav nav-pills mr-auto">
+          <li class="nav-item ">
+            <a class="nav-link <%= 'active' if params[:range].to_i == 7 || params[:range].blank? %>" href=" <%= url_for(request.params.merge(range: 7)) %>">Last 7 days</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link <%= 'active' if params[:range].to_i == 30 %>" href=" <%= url_for(request.params.merge(range: 30)) %>">Last 30 days</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link <%= 'active' if params[:range].to_i == 90 %>" href=" <%= url_for(request.params.merge(range: 90)) %>">Last 90 days</a>
+          </li>
+        </ul>
+        <ul class="nav nav-pills ml-auto">
+          <% if Organization.internal_org_names.many? %>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle <%= 'active' if params[:org].present? %>" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Organization
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <% if params[:org].present? %>
+                  <a class="dropdown-item active" title='Click to remove org filter' href="<%= url_for(request.params.merge(org: nil)) %>">
+                    <%= params[:org] %>
+                  </a>
+                <% end %>
+                <% Organization.internal_org_names.each do |name| %>
+                  <% next if params[:org] == name %>
+                  <a class="dropdown-item" href="<%= url_for(request.params.merge(org: name)) %>">
+                    <%= name %>
+                  </a>
+                <% end %>
+              </div>
+            </li>
+          <% end %>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle <%= 'active' if params[:org_type].present? %>" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Organization Type
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <% if params[:org_type].present? %>
+                <a class="dropdown-item active" title='Click to remove organization type filter' href="<%= url_for(request.params.merge(org_type: nil)) %>">
+                  <%= params[:org_type] %>
+                </a>
+              <% end %>
+              <% ["internal", "external"].each do |name| %>
+                <% next if params[:org_type] == name %>
+                <a class="dropdown-item" href="<%= url_for(request.params.merge(org_type: name)) %>">
+                  <%= name %>
+                </a>
+              <% end %>
+            </div>
+          </li>
+          <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle <%= 'active' if params[:contributors].present? %>" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Contributor Type
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <% if params[:contributors].present? %>
+                  <a class="dropdown-item active" title='Click to remove contributor filter' href="<%= url_for(request.params.merge(contributors: nil)) %>">
+                    <%= params[:contributors] %>
+                  </a>
+                <% end %>
+                <% ["core", "not_core"].each do |name| %>
+                  <% next if params[:contributors] == name %>
+                  <a class="dropdown-item" href="<%= url_for(request.params.merge(contributors: name)) %>">
+                    <%= name %>
+                  </a>
+                <% end %>
+              </div>
+          </li>
+        </ul>
+    </div>
+</nav>

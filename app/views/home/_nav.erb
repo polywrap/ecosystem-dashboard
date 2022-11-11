@@ -37,24 +37,6 @@
             </li>
           <% end %>
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle <%= 'active' if params[:org_type].present? %>" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Organization Type
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <% if params[:org_type].present? %>
-                <a class="dropdown-item active" title='Click to remove organization type filter' href="<%= url_for(request.params.merge(org_type: nil)) %>">
-                  <%= params[:org_type] %>
-                </a>
-              <% end %>
-              <% ["internal", "external"].each do |name| %>
-                <% next if params[:org_type] == name %>
-                <a class="dropdown-item" href="<%= url_for(request.params.merge(org_type: name)) %>">
-                  <%= name %>
-                </a>
-              <% end %>
-            </div>
-          </li>
-          <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle <%= 'active' if params[:contributors].present? %>" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Contributor Type
               </a>

@@ -24,16 +24,6 @@ class HomeController < ApplicationController
       end
     end
 
-    if params[:org_type].present?
-        if (params[:org_type] == "internal")
-          @event_scope = @event_scope.internal
-          @issues_scope = @issues_scope.internal
-        elsif (params[:org_type] == "external")
-          @event_scope = @event_scope.external
-          @issues_scope = @issues_scope.external
-        end
-    end
-
     @period = (params[:range].presence || 7).to_i
 
     @new_issues = @issues_scope.this_period(@period).issues.count

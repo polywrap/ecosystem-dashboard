@@ -6,7 +6,7 @@ namespace :init_orgs do
     org.import
 
     # add collaborator organizations
-    ["defiwrapper"].each do |name|
+    ["defiwrapper", "ConsiderItDone"].each do |name|
         org = Organization.create(name: name, collaborator: true)
         org.import
 

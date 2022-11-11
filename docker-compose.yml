@@ -28,7 +28,6 @@ services:
     image: postgres:9.6-alpine
     volumes:
       - pg_data:/var/lib/postgresql/data
-#      - ./bin/init.sql:/docker-entrypoint-initdb.d/init.sql
     networks:
       - internal
     environment:

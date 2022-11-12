@@ -5,7 +5,7 @@ namespace :backfill do
   desc 'import event data for all non-internal repos with internal dependencies from gharchive'
   task all: :environment do
 
-    repo_names = Repository.not_internal.with_internal_deps.pluck(:full_name)
+    repo_names = Repository.pluck(:full_name)
 
     if ENV['START_DATE'].present?
       start_date = Time.parse(ENV['START_DATE'])
